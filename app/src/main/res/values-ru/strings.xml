@@ -1,4 +1,51 @@
 <resources>
     <string name="app_name">Зашифровать текст</string>
-    <string name="title_activity_encrypt">Шифровать</string>
+    <string name="process_text_label">Зашифровать / расшифровать</string>
+
+    <string name="password">Пароль</string>
+    <string name="password_helper">Необязательно, но рекомендуется</string>
+    <string name="fill_password">Подставить</string>
+    <string name="save_password">Запомнить</string>
+    <string name="input_hint">Текст</string>
+    <string name="encrypt">Зашифровать</string>
+    <string name="decrypt">Расшифровать</string>
+    <string name="result_encrypted">Зашифровано</string>
+    <string name="result_decrypted">Расшифровано</string>
+    <string name="copy">Копировать</string>
+    <string name="share">Поделиться</string>
+    <string name="use_as_input">Перенести в поле текста</string>
+    <string name="replace">Заменить</string>
+    <string name="copied">Скопировано</string>
+
+    <string name="error_empty_text">Введите текст</string>
+    <string name="error_empty_password">Сначала введите пароль</string>
+    <string name="error_encrypt">Не удалось зашифровать: %1$s</string>
+    <string name="error_decrypt">Не удалось расшифровать: неверный пароль или текст повреждён</string>
+    <string name="error_auth_weak">Подтвердите отпечатком пальца или PIN-кодом блокировки</string>
+
+    <string name="saved_passwords">Сохранённые пароли</string>
+    <string name="save_password_title">Запомнить пароль</string>
+    <string name="save_password_message">Пароль хранится на этом устройстве в зашифрованном виде. Чтобы подставить его, нужно будет подтвердить отпечатком пальца или блокировкой экрана.</string>
+    <string name="password_name">Название</string>
+    <string name="default_password_name">Пароль %1$d</string>
+    <string name="save">Сохранить</string>
+    <string name="password_saved">Пароль «%1$s» сохранён</string>
+    <string name="choose_password">Выберите пароль</string>
+    <string name="auth_save_title">Подтвердите сохранение пароля</string>
+    <string name="auth_fill_title">Подтвердите, чтобы подставить пароль</string>
+    <string name="no_saved_passwords">Сохранённых паролей пока нет. Введите пароль и нажмите «Запомнить».</string>
+    <string name="delete_all">Удалить все</string>
+    <string name="delete_all_title">Удалить все сохранённые пароли?</string>
+    <string name="delete_password_title">Удалить «%1$s»?</string>
+    <string name="delete_password_message">Зашифрованные им тексты не пострадают, но пароль придётся вводить вручную.</string>
+    <string name="delete">Удалить</string>
+    <string name="close">Закрыть</string>
+    <string name="no_lock_title">Нужна блокировка экрана</string>
+    <string name="no_lock_message">Сохранённые пароли защищены отпечатком пальца или блокировкой экрана. Сначала задайте PIN-код, графический ключ или пароль в настройках системы.</string>
+    <string name="key_invalidated_title">Сохранённые пароли сброшены</string>
+    <string name="key_invalidated_message">Изменились настройки безопасности устройства (блокировка экрана или отпечатки), и сохранённые пароли больше нельзя открыть. Сохраните их заново.</string>
+
+    <string name="about">О приложении</string>
+    <string name="about_title">%1$s %2$s</string>
+    <string name="about_message">Шифрует текст алгоритмом AES-256 с паролем. Выделите текст в любом приложении и выберите «Зашифровать / расшифровать», чтобы зашифровать его на месте.\n\nСохранённые пароли не покидают устройство.</string>
 </resources>

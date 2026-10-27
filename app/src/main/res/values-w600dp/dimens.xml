@@ -1,0 +1,4 @@
+<resources>
+    <!-- Tablets, foldables, landscape: keep the form readable -->
+    <dimen name="content_width">560dp</dimen>
+</resources>

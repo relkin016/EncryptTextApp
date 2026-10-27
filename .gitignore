@@ -15,3 +15,9 @@
 .idea/modules.xml
 .idea/runConfigurations.xml
 .idea/vcs.xml
+.kotlin/
+keystore/
+dist/
+.mega
+# пароли и вебхук — не в git
+CLAUDE.md

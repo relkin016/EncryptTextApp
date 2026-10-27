@@ -1,4 +1,51 @@
 <resources>
     <string name="app_name">Encrypt Text</string>
-    <string name="title_activity_encrypt">Encrypt</string>
+    <string name="process_text_label">Encrypt / decrypt</string>
+
+    <string name="password">Password</string>
+    <string name="password_helper">Optional, but recommended</string>
+    <string name="fill_password">Fill in</string>
+    <string name="save_password">Remember</string>
+    <string name="input_hint">Text</string>
+    <string name="encrypt">Encrypt</string>
+    <string name="decrypt">Decrypt</string>
+    <string name="result_encrypted">Encrypted</string>
+    <string name="result_decrypted">Decrypted</string>
+    <string name="copy">Copy</string>
+    <string name="share">Share</string>
+    <string name="use_as_input">Use as input</string>
+    <string name="replace">Replace</string>
+    <string name="copied">Copied to clipboard</string>
+
+    <string name="error_empty_text">Enter the text</string>
+    <string name="error_empty_password">Enter the password first</string>
+    <string name="error_encrypt">Could not encrypt text: %1$s</string>
+    <string name="error_decrypt">Unable to decipher text: wrong password or damaged text</string>
+    <string name="error_auth_weak">Confirm with fingerprint or screen lock PIN</string>
+
+    <string name="saved_passwords">Saved passwords</string>
+    <string name="save_password_title">Remember password</string>
+    <string name="save_password_message">The password is stored encrypted on this device. To fill it in, you will confirm with your fingerprint or screen lock.</string>
+    <string name="password_name">Name</string>
+    <string name="default_password_name">Password %1$d</string>
+    <string name="save">Save</string>
+    <string name="password_saved">Password \"%1$s\" saved</string>
+    <string name="choose_password">Choose password</string>
+    <string name="auth_save_title">Confirm to save the password</string>
+    <string name="auth_fill_title">Confirm to fill in the password</string>
+    <string name="no_saved_passwords">No saved passwords yet. Enter a password and tap \"Remember\".</string>
+    <string name="delete_all">Delete all</string>
+    <string name="delete_all_title">Delete all saved passwords?</string>
+    <string name="delete_password_title">Delete \"%1$s\"?</string>
+    <string name="delete_password_message">Texts encrypted with it are not affected, but you will need to type the password yourself.</string>
+    <string name="delete">Delete</string>
+    <string name="close">Close</string>
+    <string name="no_lock_title">Screen lock required</string>
+    <string name="no_lock_message">Saved passwords are protected by your fingerprint or screen lock. Set up a PIN, pattern or password in the system settings first.</string>
+    <string name="key_invalidated_title">Saved passwords reset</string>
+    <string name="key_invalidated_message">The device security settings changed (screen lock or fingerprints), so the saved passwords can no longer be unlocked. Save them again.</string>
+
+    <string name="about">About</string>
+    <string name="about_title">%1$s %2$s</string>
+    <string name="about_message">Encrypts text with AES-256 and a password. Select text in any app and choose \"Encrypt / decrypt\" to encrypt it in place.\n\nSaved passwords never leave this device.</string>
 </resources>
