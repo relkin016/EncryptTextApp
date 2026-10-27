@@ -35,13 +35,6 @@
             </intent-filter>
         </activity>
 
-        <activity
-            android:name=".CardsActivity"
-            android:exported="false"
-            android:label="@string/cards"
-            android:parentActivityName=".EncryptActivity"
-            android:windowSoftInputMode="adjustResize" />
-
     </application>
 
 </manifest>

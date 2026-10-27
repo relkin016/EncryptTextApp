@@ -11,13 +11,9 @@ import androidx.biometric.BiometricPrompt;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-
 import java.security.GeneralSecurityException;
 
 import javax.crypto.Cipher;
-
-import dk.meznik.jan.encrypttext.R;
 
 import static androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG;
 import static androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_WEAK;
@@ -94,27 +90,6 @@ public class AuthGate {
     public static boolean isAvailable(Context context) {
         return BiometricManager.from(context).canAuthenticate(authenticators())
                 == BiometricManager.BIOMETRIC_SUCCESS;
-    }
-
-    /** Explains that a screen lock is needed when there is none. */
-    public static boolean checkAvailable(Context context) {
-        if (isAvailable(context)) return true;
-        new MaterialAlertDialogBuilder(context)
-                .setTitle(R.string.no_lock_title)
-                .setMessage(R.string.no_lock_message)
-                .setPositiveButton(android.R.string.ok, null)
-                .show();
-        return false;
-    }
-
-    /** Wipes every vault (their key is gone) and tells the user. */
-    public static void showKeyInvalidated(Context context) {
-        PasswordVault.wipe(context);
-        new MaterialAlertDialogBuilder(context)
-                .setTitle(R.string.key_invalidated_title)
-                .setMessage(R.string.key_invalidated_message)
-                .setPositiveButton(android.R.string.ok, null)
-                .show();
     }
 
     public void run(CharSequence title, CharSequence subtitle, CipherFactory factory, CipherAction action) {

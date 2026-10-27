@@ -1,18 +1,9 @@
 {
-  "version": "0.2.0",
+  "version": "0.1.0",
   "date": "2026-10-27",
-  "file": "EncryptText-0.2.0.apk",
-  "size": 1678290,
-  "sha256": "2ee9ec399b4ff103135ca5cc1b63d09933cd913ddf8b07312a69566ee250c508",
-  "url": "https://mega.nz/file/pvgW2Z5S#_fCKevThs8DuQJQkE4ymqJtlKUV2LmbX3t7oPi5WEAE",
-  "minAndroid": "6.0",
-  "previous": {
-    "version": "0.1.0",
-    "date": "2026-10-27",
-    "file": "EncryptText-0.1.0.apk",
-    "size": 1655210,
-    "sha256": "d66d5a7b0cc0f6e5577b893a42503a3f3155b7aa169dbcad5d16d4f3139c7ad1",
-    "url": "https://mega.nz/file/hrgwCKib#_NFdGS_ZY-4gmc7cx3Nat0P0URo3OEGaJ40tTJJ2YNw",
-    "minAndroid": "6.0"
-  }
+  "file": "EncryptText-0.1.0.apk",
+  "size": 1655210,
+  "sha256": "d66d5a7b0cc0f6e5577b893a42503a3f3155b7aa169dbcad5d16d4f3139c7ad1",
+  "url": "https://mega.nz/file/hrgwCKib#_NFdGS_ZY-4gmc7cx3Nat0P0URo3OEGaJ40tTJJ2YNw",
+  "minAndroid": "6.0"
 }

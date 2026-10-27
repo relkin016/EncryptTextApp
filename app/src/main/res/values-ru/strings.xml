@@ -41,38 +41,11 @@
     <string name="delete">Удалить</string>
     <string name="close">Закрыть</string>
     <string name="no_lock_title">Нужна блокировка экрана</string>
-    <string name="no_lock_message">Сохранённые пароли и карты защищены отпечатком пальца или блокировкой экрана. Сначала задайте PIN-код, графический ключ или пароль в настройках системы.</string>
-    <string name="key_invalidated_title">Сохранённые данные сброшены</string>
-    <string name="key_invalidated_message">Изменились настройки безопасности устройства (блокировка экрана или отпечатки), и сохранённые пароли и карты больше нельзя открыть. Сохраните их заново.</string>
-
-    <string name="cards">Карты</string>
-    <string name="back">Назад</string>
-    <string name="no_cards">Сохранённых карт пока нет. Данные карт хранятся на этом устройстве в зашифрованном виде и открываются отпечатком пальца или блокировкой экрана.</string>
-    <string name="add_card">Добавить карту</string>
-    <string name="new_card">Новая карта</string>
-    <string name="edit">Изменить</string>
-    <string name="show">Показать</string>
-    <string name="card_number">Номер карты</string>
-    <string name="card_holder">Держатель</string>
-    <string name="card_expiry">Срок действия</string>
-    <string name="card_expiry_placeholder">ММ/ГГ</string>
-    <string name="card_cvv">CVV / CVC</string>
-    <string name="card_pin">PIN-код</string>
-    <string name="card_account">Счёт / IBAN</string>
-    <string name="default_card_name">Карта %1$d</string>
-    <string name="default_card_name_number">Карта •%1$s</string>
-    <string name="card_saved">Карта «%1$s» сохранена</string>
-    <string name="auth_open_card_title">Подтвердите, чтобы открыть карту</string>
-    <string name="auth_save_card_title">Подтвердите сохранение карты</string>
-    <string name="error_card_empty">Введите номер карты или счёт</string>
-    <string name="error_card_number">Неверный номер карты</string>
-    <string name="error_card_expiry">Формат ММ/ГГ</string>
-    <string name="error_card_cvv">3 или 4 цифры</string>
-    <string name="error_card_pin">От 4 до 12 цифр</string>
-    <string name="error_card_read">Не удалось прочитать данные карты</string>
-    <string name="delete_card_message">Данные карты будут удалены с этого устройства.</string>
+    <string name="no_lock_message">Сохранённые пароли защищены отпечатком пальца или блокировкой экрана. Сначала задайте PIN-код, графический ключ или пароль в настройках системы.</string>
+    <string name="key_invalidated_title">Сохранённые пароли сброшены</string>
+    <string name="key_invalidated_message">Изменились настройки безопасности устройства (блокировка экрана или отпечатки), и сохранённые пароли больше нельзя открыть. Сохраните их заново.</string>
 
     <string name="about">О приложении</string>
     <string name="about_title">%1$s %2$s</string>
-    <string name="about_message">Шифрует текст алгоритмом AES-256 с паролем. Выделите текст в любом приложении и выберите «Зашифровать / расшифровать», чтобы зашифровать его на месте.\n\nСохранённые пароли и карты не покидают устройство.</string>
+    <string name="about_message">Шифрует текст алгоритмом AES-256 с паролем. Выделите текст в любом приложении и выберите «Зашифровать / расшифровать», чтобы зашифровать его на месте.\n\nСохранённые пароли не покидают устройство.</string>
 </resources>
