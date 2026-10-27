@@ -41,11 +41,38 @@
     <string name="delete">Delete</string>
     <string name="close">Close</string>
     <string name="no_lock_title">Screen lock required</string>
-    <string name="no_lock_message">Saved passwords are protected by your fingerprint or screen lock. Set up a PIN, pattern or password in the system settings first.</string>
-    <string name="key_invalidated_title">Saved passwords reset</string>
-    <string name="key_invalidated_message">The device security settings changed (screen lock or fingerprints), so the saved passwords can no longer be unlocked. Save them again.</string>
+    <string name="no_lock_message">Saved passwords and cards are protected by your fingerprint or screen lock. Set up a PIN, pattern or password in the system settings first.</string>
+    <string name="key_invalidated_title">Saved data reset</string>
+    <string name="key_invalidated_message">The device security settings changed (screen lock or fingerprints), so the saved passwords and cards can no longer be unlocked. Save them again.</string>
+
+    <string name="cards">Cards</string>
+    <string name="back">Back</string>
+    <string name="no_cards">No saved cards yet. Card details are stored encrypted on this device and open with your fingerprint or screen lock.</string>
+    <string name="add_card">Add card</string>
+    <string name="new_card">New card</string>
+    <string name="edit">Edit</string>
+    <string name="show">Show</string>
+    <string name="card_number">Card number</string>
+    <string name="card_holder">Cardholder</string>
+    <string name="card_expiry">Valid thru</string>
+    <string name="card_expiry_placeholder">MM/YY</string>
+    <string name="card_cvv">CVV / CVC</string>
+    <string name="card_pin">PIN</string>
+    <string name="card_account">Account / IBAN</string>
+    <string name="default_card_name">Card %1$d</string>
+    <string name="default_card_name_number">Card •%1$s</string>
+    <string name="card_saved">Card \"%1$s\" saved</string>
+    <string name="auth_open_card_title">Confirm to open the card</string>
+    <string name="auth_save_card_title">Confirm to save the card</string>
+    <string name="error_card_empty">Enter the card number or the account</string>
+    <string name="error_card_number">Invalid card number</string>
+    <string name="error_card_expiry">Use the MM/YY format</string>
+    <string name="error_card_cvv">3 or 4 digits</string>
+    <string name="error_card_pin">4 to 12 digits</string>
+    <string name="error_card_read">Could not read the card data</string>
+    <string name="delete_card_message">The card details will be deleted from this device.</string>
 
     <string name="about">About</string>
     <string name="about_title">%1$s %2$s</string>
-    <string name="about_message">Encrypts text with AES-256 and a password. Select text in any app and choose \"Encrypt / decrypt\" to encrypt it in place.\n\nSaved passwords never leave this device.</string>
+    <string name="about_message">Encrypts text with AES-256 and a password. Select text in any app and choose \"Encrypt / decrypt\" to encrypt it in place.\n\nSaved passwords and cards never leave this device.</string>
 </resources>

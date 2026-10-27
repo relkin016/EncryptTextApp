@@ -27,14 +27,15 @@ import javax.crypto.SecretKey;
 import javax.crypto.spec.GCMParameterSpec;
 
 /**
- * Saved passwords, encrypted with an AES-GCM key from the Android Keystore.
+ * Saved secrets (passwords, bank cards), encrypted with an AES-GCM key from the Android Keystore.
  * The key can only be used after the user confirms with a fingerprint or the screen lock,
- * so every encrypt/decrypt goes through {@link AuthGate}.
+ * so every encrypt/decrypt goes through {@link AuthGate}. All vaults share the same key.
  */
 public class PasswordVault {
     private static final String KEYSTORE = "AndroidKeyStore";
     private static final String KEY_ALIAS = "saved_passwords";
-    private static final String PREFS = "saved_passwords";
+    private static final String PREFS_PASSWORDS = "saved_passwords";
+    private static final String PREFS_CARDS = "saved_cards";
     private static final String PREF_ENTRIES = "entries";
     private static final String TRANSFORMATION = "AES/GCM/NoPadding";
     private static final int GCM_TAG_BITS = 128;
@@ -57,8 +58,27 @@ public class PasswordVault {
 
     private final SharedPreferences prefs;
 
-    public PasswordVault(Context context) {
-        prefs = context.getSharedPreferences(PREFS, Context.MODE_PRIVATE);
+    private PasswordVault(Context context, String prefsName) {
+        prefs = context.getSharedPreferences(prefsName, Context.MODE_PRIVATE);
+    }
+
+    public static PasswordVault passwords(Context context) {
+        return new PasswordVault(context, PREFS_PASSWORDS);
+    }
+
+    /** Values are {@link Card#toJson()}. */
+    public static PasswordVault cards(Context context) {
+        return new PasswordVault(context, PREFS_CARDS);
+    }
+
+    /** The key is gone, so nothing in any vault can be decrypted any more. */
+    public static void wipe(Context context) {
+        passwords(context).clear();
+        cards(context).clear();
+        try {
+            keyStore().deleteEntry(KEY_ALIAS);
+        } catch (GeneralSecurityException ignored) {
+        }
     }
 
     public List<Entry> list() {
@@ -111,18 +131,21 @@ public class PasswordVault {
         return new String(cipher.doFinal(entry.data), StandardCharsets.UTF_8);
     }
 
+    /** Like {@link #add} but also drops {@code oldName} when the entry was renamed. */
+    public void replace(String oldName, String name, String value, Cipher cipher) throws GeneralSecurityException {
+        add(name, value, cipher);
+        if (oldName != null && !oldName.equals(name)) remove(oldName);
+    }
+
     public void remove(String name) {
         List<Entry> entries = new ArrayList<>(list());
         removeByName(entries, name);
         save(entries);
     }
 
+    /** Keeps the key: the other vaults still use it. */
     public void clear() {
         prefs.edit().clear().apply();
-        try {
-            keyStore().deleteEntry(KEY_ALIAS);
-        } catch (GeneralSecurityException ignored) {
-        }
     }
 
     private static void removeByName(List<Entry> entries, String name) {

@@ -1,4 +1,5 @@
 <resources>
     <!-- -1px == match_parent -->
     <dimen name="content_width">-1px</dimen>
+    <dimen name="fab_margin">16dp</dimen>
 </resources>

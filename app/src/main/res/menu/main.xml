@@ -2,6 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/action_cards"
+        android:icon="@drawable/ic_card"
+        android:title="@string/cards"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/action_saved_passwords"
         android:title="@string/saved_passwords"
         app:showAsAction="never" />

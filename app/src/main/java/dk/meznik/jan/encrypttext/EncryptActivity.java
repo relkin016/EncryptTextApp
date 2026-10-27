@@ -1,20 +1,15 @@
 package dk.meznik.jan.encrypttext;
 
-import android.content.ClipData;
-import android.content.ClipDescription;
-import android.content.ClipboardManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.text.Editable;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,6 +30,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import java.util.List;
 
 import dk.meznik.jan.encrypttext.util.AuthGate;
+import dk.meznik.jan.encrypttext.util.Clipboard;
 import dk.meznik.jan.encrypttext.util.Encryption;
 import dk.meznik.jan.encrypttext.util.PasswordVault;
 
@@ -83,7 +79,10 @@ public class EncryptActivity extends AppCompatActivity implements AuthGate.Liste
 
         MaterialToolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setOnMenuItemClickListener(item -> {
-            if (item.getItemId() == R.id.action_saved_passwords) {
+            if (item.getItemId() == R.id.action_cards) {
+                startActivity(new Intent(this, CardsActivity.class));
+                return true;
+            } else if (item.getItemId() == R.id.action_saved_passwords) {
                 manageSavedPasswords();
                 return true;
             } else if (item.getItemId() == R.id.action_about) {
@@ -93,7 +92,7 @@ public class EncryptActivity extends AppCompatActivity implements AuthGate.Liste
             return false;
         });
 
-        vault = new PasswordVault(this);
+        vault = PasswordVault.passwords(this);
         authGate = new AuthGate(this, getString(R.string.error_auth_weak), this);
 
         findViewById(R.id.buttonEncrypt).setOnClickListener(v -> process(true));
@@ -213,19 +212,7 @@ public class EncryptActivity extends AppCompatActivity implements AuthGate.Liste
     }
 
     private void copyResult() {
-        ClipboardManager clipboardManager = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-        ClipData clipData = ClipData.newPlainText(getString(R.string.app_name), result);
-        if (resultIsPlain && Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-            PersistableBundle extras = new PersistableBundle();
-            extras.putBoolean(Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
-                    ? ClipDescription.EXTRA_IS_SENSITIVE : "android.content.extra.IS_SENSITIVE", true);
-            clipData.getDescription().setExtras(extras);
-        }
-        clipboardManager.setPrimaryClip(clipData);
-        // Android 13+ shows its own confirmation
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.TIRAMISU) {
-            Toast.makeText(this, R.string.copied, Toast.LENGTH_SHORT).show();
-        }
+        Clipboard.copy(this, getString(R.string.app_name), result, resultIsPlain);
     }
 
     private void shareResult() {
@@ -249,16 +236,6 @@ public class EncryptActivity extends AppCompatActivity implements AuthGate.Liste
 
     // ---- Saved passwords ----
 
-    private boolean checkLockScreen() {
-        if (AuthGate.isAvailable(this)) return true;
-        new MaterialAlertDialogBuilder(this)
-                .setTitle(R.string.no_lock_title)
-                .setMessage(R.string.no_lock_message)
-                .setPositiveButton(android.R.string.ok, null)
-                .show();
-        return false;
-    }
-
     private void savePassword() {
         String password = text(passwordText);
         if (password.isEmpty()) {
@@ -266,7 +243,7 @@ public class EncryptActivity extends AppCompatActivity implements AuthGate.Liste
             return;
         }
         passwordLayout.setError(null);
-        if (!checkLockScreen()) return;
+        if (!AuthGate.checkAvailable(this)) return;
 
         View view = getLayoutInflater().inflate(R.layout.dialog_password_name, null);
         TextInputEditText nameText = view.findViewById(R.id.name);
@@ -295,7 +272,7 @@ public class EncryptActivity extends AppCompatActivity implements AuthGate.Liste
     private void fillPassword() {
         List<PasswordVault.Entry> entries = vault.list();
         if (entries.isEmpty()) return;
-        if (!checkLockScreen()) return;
+        if (!AuthGate.checkAvailable(this)) return;
         if (entries.size() == 1) {
             revealPassword(entries.get(0));
             return;
@@ -353,13 +330,8 @@ public class EncryptActivity extends AppCompatActivity implements AuthGate.Liste
 
     @Override
     public void onKeyInvalidated() {
-        vault.clear();
         fillButton.setEnabled(false);
-        new MaterialAlertDialogBuilder(this)
-                .setTitle(R.string.key_invalidated_title)
-                .setMessage(R.string.key_invalidated_message)
-                .setPositiveButton(android.R.string.ok, null)
-                .show();
+        AuthGate.showKeyInvalidated(this);
     }
 
     @Override
